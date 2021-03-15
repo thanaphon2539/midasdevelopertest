@@ -96,15 +96,15 @@ const example_five_one = (params = {}) => {
     let count = 0
     for (let i = 1; i <= 25; i++) {
         if (i == 5) {
-            count+=1
+            count += 1
         } else if (i == 10) {
-            count+=1
+            count += 1
         } else if (i == 15) {
-            count+=1
+            count += 1
         } else if (i == 20) {
-            count+=1
+            count += 1
         } else if (i == 25) {
-            count+=1
+            count += 1
         }
     }
     // console.log(`จะม้าที่เร้วที่สุดของ ${count} กลุ่ม /  ${count} รอบ`);
@@ -117,7 +117,53 @@ const example_five_one = (params = {}) => {
 
 const example_five_two = (params = {}) => {
 
-    
+    let a1 = false
+    let a2 = false
+    let a3 = false
+    let a4 = false
+    let a5 = false
+    let a6 = false
+    let a7 = false
+    let key = [
+        '1&7',
+        '3&6',
+        '2&6',
+        '1&5',
+        '3&7',
+        '4'
+    ]
+    for (let i = 0; i < key.length; i++) {
+
+        // console.log(key[0]);
+        if (key[i] == '1&7') { // ต่างกัน
+            a1 = false
+            a7 = false
+        }else if (key[i] == '3&6') { // ไม่ใช่ยาพิษ
+            a3 = false
+            a6 = false
+        } else if (key[i] == '2&6') { // ไวน์ 2 ขวด
+            a2 = false
+            a6 = false
+        } else if (key[i] == '1&5') { // ยาพิษ 2 ขวด
+            a1 = false
+            a5 = false
+        } else if (key[i] == '3&7') { // ยาวาปไปข้างหน้า และ ยาวาปถอยหลัง
+            a3 = true
+            a7 = true
+        } else if (key[i] == '4') { // ยาพิษ 1 ขวด
+            a4 = false
+        }
+    }
+
+    return {
+        'ขวดที่ 1': a1,
+        'ขวดที่ 2': a2,
+        'ขวดที่ 3': a3,
+        'ขวดที่ 4': a4,
+        'ขวดที่ 5': a5,
+        'ขวดที่ 6': a6,
+        'ขวดที่ 7': a7
+    }
 };
 
 const exp_one = logic_one()
@@ -146,7 +192,7 @@ console.log("example_five_one");
 console.log(exp_five_one);
 console.log("-------------------------------------------------------------");
 
-const exp_five_two = exp_five_two()
+const exp_five_two = example_five_two()
 console.log("exp_five_two");
-// console.log(exp_five_two);
+console.log(exp_five_two);
 console.log("-------------------------------------------------------------");
